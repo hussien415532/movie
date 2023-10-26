@@ -1,0 +1,43 @@
+<div class="cover position-relative overflow-hidden">
+  <img class="cover-img img-fluid vh-100 w-100" src="https://image.tmdb.org/t/p/original{{movie?.backdrop_path}}" alt="">
+  <div class="container position-absolute text-white start-50 top-50 m-auto translate-middle">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="d-flex justify-content-center">
+          <img class='w-50 object-fit-cover rounded-2' src="https://image.tmdb.org/t/p/original{{movie?.poster_path}}"
+            alt="">
+        </div>
+      </div>
+      <div class="col-12 col-md-6 text-sm-start text-center">
+        <div class="p-2">
+          <h1 class="fs-1 lh-1 mt-4">{{movie?.title}} ({{movie?.release_date.slice(0,4)}})</h1>
+          <div class="d-flex justify-content-start align-items-center gap-2">
+            <p *ngFor="let genre of genres" class="genre text-bg-light rounded-pill p-1 fw-lighter">{{genre?.name}}
+            </p>
+          </div>
+          <div
+            class="rate text-bg-dark bg-opacity-75 d-inline-block rounded-2 d-flex justify-content-center align-items-center gap-1 p-1">
+            <p class="m-0">{{movie?.vote_average.toFixed(1)}}</p>
+            <mat-icon class="text-warning">star</mat-icon>
+          </div>
+          <p class="mt-4">{{movie?.release_date}}</p>
+          <h1 class="mb-1 mt-5">Overview</h1>
+          <p class="fs-6">{{movie?.overview}}</p>
+          <div class="trailer d-flex justify-content-start gap-1 align-items-center mt-4">
+            <p class="m-0 fs-5 d-inline-block" (click)="trailerDialog()">Watch Trailer</p>
+            <i class="bi bi-youtube fs-5 text-danger"></i>
+          </div>
+          <a href="https://www.imdb.com/title/{{movie?.imdb_id}}/" class="mt-4 d-block" target="_blank">
+          <img src="../../../assets/logo/imdb .png" alt="" class="imdb">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container p-4 mt-5">
+  <mat-divider></mat-divider>
+  <app-cast></app-cast>
+  <mat-divider></mat-divider>
+  <app-similar></app-similar>
+</div>

@@ -1,0 +1,36 @@
+.logo {
+  width: 50px;
+}
+.text-bg-success {
+  background-color: rgb(47, 202, 130) !important;
+}
+.nav-link
+{
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+.nav-link:hover
+{
+  background-color:rgb(47, 202, 130) !important ;
+  color: white;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.lang mat-form-field
+{
+  width: 100px;
+}
+nav
+{
+  z-index: 5  !important;
+  height: 75px;
+  mat-form-field{
+    margin-top: 20px;
+  }
+}

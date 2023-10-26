@@ -1,0 +1,14 @@
+<h1 class="fs-2 pt-3 mt-3">Similar Movies</h1>
+
+<swiper-container grid-rows="1" mousewheel-force-to-axis="true" class="mb-5" [slidesPerView]="getSlidesPerView()" loop="true">
+  <ng-container *ngFor="let simi of similar">
+    <swiper-slide *ngIf="simi.poster_path" class="m-2" (click)="movieDetails(simi.id)">
+      <div class="card position-relative">
+        <img class="card-img-top" src="https://image.tmdb.org/t/p/original{{simi.poster_path}}" alt="">
+        <div class="card-body p-0">
+          <p class="fs-6 g-0 p-1 pt-2">{{simi?.title}}</p>
+        </div>
+      </div>
+    </swiper-slide>
+  </ng-container>
+</swiper-container>

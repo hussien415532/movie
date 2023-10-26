@@ -1,0 +1,15 @@
+<h1 class="fs-2 pt-3">Top Cast</h1>
+
+<swiper-container [slidesPerView]="getSlidesPerView()" grid-rows="1" mousewheel-force-to-axis="true" class="mb-5">
+  <ng-container *ngFor="let item of cast.slice(0,10)">
+    <swiper-slide  class="m-2" [routerLink]="['/people',item.id]" *ngIf="item.profile_path">
+      <div class="card">
+        <img src="https://image.tmdb.org/t/p/original{{item.profile_path}}" class="card-img-top" alt="..." [title]="item.original_name">
+        <div class="card-body">
+          <h4 class="card-title m-0 text-nowrap fs-6 text-truncate" [title]="item.original_name">{{item.original_name}}</h4>
+          <p class="card-subtitle m-0 text-nowrap text-truncate" [title]="item.character">{{item.character}}</p>
+        </div>
+      </div>
+    </swiper-slide>
+  </ng-container>
+</swiper-container>

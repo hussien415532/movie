@@ -1,0 +1,26 @@
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+  <p class="fs-2 p-2 mt-2">Trending</p>
+  <mat-divider></mat-divider>
+  <div class="carousel-inner mt-3 overflow-hidden">
+    <div class="carousel-item active" data-bs-interval="3000" [routerLink]="['/movie',trending[1]?.id]">
+      <img src="https://image.tmdb.org/t/p/original{{trending[1]?.backdrop_path}}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-block">
+        <h1 class="display-1 p-3">{{trending[1]?.title ||trending[1]?.original_title}}</h1>
+      </div>
+    </div>
+    <div class="carousel-item" *ngFor="let trend of trending.slice(2)" data-bs-interval="3000" [routerLink]="['/movie',trend?.id]">
+      <img src="https://image.tmdb.org/t/p/original{{trend?.backdrop_path}}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-block">
+        <h1 class="display-1 p-3">{{trend?.title ||trend?.original_title}}</h1>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

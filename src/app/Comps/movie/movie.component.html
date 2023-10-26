@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="py-5">
+    <h1 class="mt-5 fs-2">Popular Movies</h1>
+    <mat-divider></mat-divider>
+    <div class="row">
+      <div class="col-6 col-md-4 col-lg-2 g-3 movie" *ngFor="let pop of popList | paginate: { id: 'server', itemsPerPage: 10, currentPage: page, totalItems: totalPages }" [routerLink]="['/movie',pop.id]">
+        <div class="rounded-2 overflow-hidden position-relative">
+          <img src="https://image.tmdb.org/t/p/original{{pop.poster_path}}" alt="" class="w-100 ">
+          <p class="position-absolute title text-light text-center m-0 p-4 mb-4">{{pop.title}}</p>
+          <div
+            class="rate text-bg-dark bg-opacity-75 d-inline-block rounded-2 d-flex justify-content-center align-items-center gap-1 p-1 position-absolute top-0 start-0 m-1">
+            <p class="m-0">{{pop.vote_average}}</p>
+            <mat-icon class="text-warning">star</mat-icon>
+          </div>
+          <p class="date position-absolute text-bg-dark bg-opacity-50 end-0  mb-1 me-1 rounded-pill p-1">
+            {{pop.release_date.slice(0,4)}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 page text-center d-flex justify-content-center gap-5">
+      <button class="btn btn-outline-success" [disabled]="page==1" (click)="prevPage()">Previous</button>
+      <button class="btn btn-outline-success" [disabled]="page==totalPages" (click)="nextPage()">Next</button>
+    </div>
+  </div>
+
+</div>

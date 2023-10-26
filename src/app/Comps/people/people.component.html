@@ -1,0 +1,19 @@
+<div class="container">
+  <h1 class="p-2 fs-2">Popular People</h1>
+  <mat-divider></mat-divider>
+  <div class="row gy-4 p-4">
+    <div class="col-6 col-md-4 col-lg-3" *ngFor="let person of peoples" [routerLink]="['/people',person.id]">
+      <div class="card">
+        <img src="https://image.tmdb.org/t/p/original{{person?.profile_path}}" class="card-img-top" alt="...">
+        <div class="card-body p-1">
+          <h3 class="card-title mb-0">{{person?.name}}</h3>
+          <p class="card-text">
+            <span *ngFor="let p of person?.known_for">
+              {{p.title}},
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+
+<div class="cover position-relative overflow-hidden">
+  <img class="cover-img img-fluid vh-100 w-100" src="https://image.tmdb.org/t/p/original{{tv?.backdrop_path}}" alt="">
+  <div class="container position-absolute text-white start-50 top-50 m-auto translate-middle">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="d-flex justify-content-center">
+          <img class='w-50 object-fit-cover rounded-2' src="https://image.tmdb.org/t/p/original{{tv?.poster_path}}"
+            alt="">
+        </div>
+      </div>
+      <div class="col-12 col-md-6 text-sm-start text-center">
+        <div class="p-2">
+          <h1 class="fs-1 lh-1 mt-4">{{tv?.original_name}} ({{tv?.first_air_date.slice(0,4)}})</h1>
+          <div class="d-flex justify-content-start align-items-center gap-2">
+            <p *ngFor="let genre of genres" class="genre text-bg-light rounded-pill p-1 fw-lighter">{{genre?.name}}
+            </p>
+          </div>
+          <div
+            class="rate text-bg-dark bg-opacity-75 d-inline-block rounded-2 d-flex justify-content-center align-items-center gap-1 p-1">
+            <p class="m-0">{{tv?.vote_average.toFixed(1)}}</p>
+            <mat-icon class="text-warning">star</mat-icon>
+          </div>
+          <p class="mt-4">{{tv?.first_air_date}}</p>
+          <h1 class="mb-1 mt-5" *ngIf="tv?.overview">Overview</h1>
+          <p class="fs-6">{{tv?.overview}}</p>
+          <div class="trailer d-flex justify-content-start gap-1 align-items-center mt-4" (click)="trailerDialog()">
+            <p class="m-0 fs-5 d-inline-block" (click)="trailerDialog()">Watch Trailer</p>
+            <i class="bi bi-youtube fs-5 text-danger"></i>
+          </div>
+          <a href="https://www.imdb.com/title/{{tv?.imdb_id}}/" class="mt-4 d-block" target="_blank">
+          <img src="../../../assets/logo/imdb .png" alt="" class="imdb">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container p-4 mt-5">
+  <mat-divider></mat-divider>
+  <h1 class="fs-2 mt-4">Cast</h1>
+  <swiper-container grid-rows="1" mousewheel-force-to-axis="true" class="mb-5" [s] loop="true" [slidesPerView]="getSlidesPerView()">
+    <ng-container *ngFor="let simi of cast">
+      <swiper-slide *ngIf="simi.profile_path" class="m-2" [routerLink]="['/people',simi.id]">
+        <div class="card" >
+          <img class="card-img-top w-100" src="https://image.tmdb.org/t/p/original{{simi.profile_path}}" alt="">
+          <div class="card-body p-0">
+            <p class="fs-6 g-0 p-1 pt-2 text-truncate" [title]="simi.name">{{simi?.name}}</p>
+            <p class="fs-6 g-0 text-truncate" [title]="simi.character">{{simi?.character}}</p>
+          </div>
+        </div>
+      </swiper-slide>
+    </ng-container>
+  </swiper-container>
+  <mat-divider></mat-divider>
+
+</div>
